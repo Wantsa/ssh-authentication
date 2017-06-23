@@ -7,6 +7,7 @@ git fetch origin --quiet
 CHANGED_FILES=$(git rev-list HEAD...origin/master --count)
 BASE=$(git rev-parse origin/master)
 
+ruby build_mappings.rb
 
 if [ $CHANGED_FILES -gt 0 ]; then
   logger System "Updating authorized_keys (git commit $BASE)"
