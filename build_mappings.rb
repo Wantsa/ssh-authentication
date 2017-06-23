@@ -2,7 +2,7 @@ require 'yaml'
 
 at_exit do
 	keys = YAML::load_file(File.join(File.dirname(File.expand_path(__FILE__)), 'yubikey_mappings.yml'))
-	mapping_string = "ubuntu:#{mappings_to_string(keys)}\n"
+	mapping_string = "ubuntu:#{mappings_to_string(keys)}"
 	abort if mapping_string == read_mappings
 	write_mappings(mapping_string)
 end
