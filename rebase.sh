@@ -27,4 +27,4 @@ else
   logger ssh-authentication "Nope, authorized_keys is cool just the way it is"
 fi
 
-chmod 600 authorized_keys yubikey_mappings
+chmod 600 authorized_keys
