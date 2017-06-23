@@ -13,6 +13,7 @@ end
 
 def read_mappings(filename = 'yubikey_mappings')
 	full_filename = filename(filename)
+	return nil unless File.exists?(full_filename)
 	IO.read(full_filename)
 end
 
