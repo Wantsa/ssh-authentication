@@ -6,6 +6,7 @@ cd ~
 
 git clone https://github.com/Wantsa/ssh-authentication.git
 rsync -ac ./ssh-authentication/ ~/.ssh/
+rm -rf ./ssh-authentication
 
 sudo add-apt-repository -y ppa:yubico/stable
 sudo apt-get update && sudo apt-get install -y libpam-yubico ruby
