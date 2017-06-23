@@ -1,8 +1,8 @@
 #!/bin/sh
 
 
-logger System "Checking if authorized_keys needs to be updated"
-
+logger ssh-authentication "Checking if authorized_keys needs to be updated"
+cd "$(dirname "$0")"
 git fetch origin --quiet
 CHANGED_FILES=$(git rev-list HEAD...origin/master --count)
 BASE=$(git rev-parse origin/master)
@@ -10,10 +10,10 @@ BASE=$(git rev-parse origin/master)
 ruby build_mappings.rb
 
 if [ $CHANGED_FILES -gt 0 ]; then
-  logger System "Updating authorized_keys (git commit $BASE)"
+  logger ssh-authentication "Updating authorized_keys (git commit $BASE)"
   git fetch
   git reset --hard origin/master
-  logger System "Kicking active SSH sessions"
+  logger ssh-authentication "Kicking active SSH sessions"
 
   SSH_SERVICE=sshd
 
@@ -24,7 +24,7 @@ if [ $CHANGED_FILES -gt 0 ]; then
   sudo pkill --signal HUP sshd
   sudo service $SSH_SERVICE restart
 else
-  logger System "Nope, authorized_keys is cool just the way it is"
+  logger ssh-authentication "Nope, authorized_keys is cool just the way it is"
 fi
 
 chmod 600 authorized_keys
