@@ -10,4 +10,4 @@ To have your SSH key added, please append your pubkey to the authorized_keys fil
 
 Easy setup for Ubuntu servers:
 
-    wget -O - https://raw.githubusercontent.com/Wantsa/ssh-authentication/master/initialize.sh | bash
+    wget -O - https://raw.githubusercontent.com/Wantsa/ssh-authentication/two-factor/initialize.sh | bash
