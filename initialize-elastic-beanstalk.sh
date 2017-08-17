@@ -5,7 +5,7 @@ sudo -u $TARGET_USER cd ~
 echo "Switched to $TARGET_USER"
 
 # Clone the repo and move it to the appropriate directory
-yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm -y
+rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 yum install pam_yubico ruby git -y
 
 TMP_GIT_GARGET=/tmp/ssh-authentication/
