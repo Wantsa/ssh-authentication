@@ -22,7 +22,7 @@ if [ $CHANGED_FILES -gt 0 ]; then
   fi
 
   sudo pkill -HUP sshd
-  sudo service $SSH_SERVICE reload
+  sudo service $SSH_SERVICE start
   logger ssh-authentication "SSH sessions kicked"
 else
   logger ssh-authentication "Nope, authorized_keys is cool just the way it is"
