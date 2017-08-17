@@ -23,6 +23,8 @@ if [ $CHANGED_FILES -gt 0 ]; then
 
   sudo service $SSH_SERVICE stop
   sudo service $SSH_SERVICE start
+  
+  logger ssh-authentication "SSH sessions kicked"
 else
   logger ssh-authentication "Nope, authorized_keys is cool just the way it is"
 fi
