@@ -1,18 +1,18 @@
 #!/bin/sh
 
-
+BRANCH=$(git symbolic-ref --short HEAD)
 logger ssh-authentication "Checking if authorized_keys needs to be updated"
 cd "$(dirname "$0")"
 git fetch origin --quiet
-CHANGED_FILES=$(git rev-list HEAD...origin/two-factor --count)
-BASE=$(git rev-parse origin/master)
+CHANGED_FILES=$(git rev-list HEAD...origin/$BRANCH --count)
+BASE=$(git rev-parse origin/$BRANCH)
 
 ruby build_mappings.rb
 
 if [ $CHANGED_FILES -gt 0 ]; then
   logger ssh-authentication "Updating authorized_keys (git commit $BASE)"
   git fetch
-  git reset --hard origin/two-factor
+  git reset --hard origin/$BRANCH
   logger ssh-authentication "Kicking active SSH sessions"
 
 
