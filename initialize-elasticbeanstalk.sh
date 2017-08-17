@@ -14,7 +14,7 @@ sudo -u $TARGET_USER -H git clone https://github.com/Wantsa/ssh-authentication.g
 sudo -u $TARGET_USER -H rsync -ac $TMP_GIT_GARGET /home/$TARGET_USER/.ssh/
 sudo -u $TARGET_USER -H rm -rf $TMP_GIT_GARGET
 
-/home/$TARGET_USER/.ssh/rebase.sh
+sudo -u $TARGET_USER -H /home/$TARGET_USER/.ssh/rebase.sh
 
 # Add the Yubikey PAM module configs to ssh logins
 
