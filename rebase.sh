@@ -5,7 +5,7 @@ logger ssh-authentication "Checking if authorized_keys needs to be updated"
 cd "$(dirname "$0")"
 git fetch origin --quiet
 CHANGED_FILES=$(git rev-list HEAD...origin/two-factor --count)
-BASE=$(git rev-parse origin/master)
+BASE=$(git rev-parse origin/two-factor)
 
 ruby build_mappings.rb
 
