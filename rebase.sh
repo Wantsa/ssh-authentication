@@ -15,13 +15,14 @@ if [ $CHANGED_FILES -gt 0 ]; then
   git reset --hard origin/$BRANCH
   logger ssh-authentication "Kicking active SSH sessions"
 
+  SSH_SERVICE=sshd
 
   if [ -f /etc/debian_version ]; then
     SSH_SERVICE=ssh
   fi
 
   sudo pkill -HUP sshd
-  sudo service $SSH_SERVICE restart
+  sudo service $SSH_SERVICE reload
   logger ssh-authentication "SSH sessions kicked"
 else
   logger ssh-authentication "Nope, authorized_keys is cool just the way it is"
