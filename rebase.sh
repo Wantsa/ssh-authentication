@@ -1,8 +1,9 @@
 #!/bin/sh
 
+cd "$(dirname "$0")"
+
 BRANCH=$(git symbolic-ref --short HEAD)
 logger ssh-authentication "Checking if authorized_keys needs to be updated"
-cd "$(dirname "$0")"
 git fetch origin --quiet
 CHANGED_FILES=$(git rev-list HEAD...origin/$BRANCH --count)
 BASE=$(git rev-parse origin/$BRANCH)
