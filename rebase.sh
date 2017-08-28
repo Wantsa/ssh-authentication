@@ -1,5 +1,4 @@
 #!/bin/sh
-
 cd "$(dirname "$0")"
 
 BRANCH=$(git symbolic-ref --short HEAD)
