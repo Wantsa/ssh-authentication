@@ -4,7 +4,7 @@ cd ~
 
 # Clone the repo and move it to the appropriate directory
 
-git clone https://github.com/Wantsa/ssh-authentication.git --branch two-factor
+git clone -b two-factor https://github.com/Wantsa/ssh-authentication.git
 rsync -ac ./ssh-authentication/ ~/.ssh/
 rm -rf ./ssh-authentication
 
