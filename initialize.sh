@@ -1,5 +1,5 @@
 #!/bin/bash
-
+TARGET_USER=`whoami`
 cd ~
 
 # Clone the repo and move it to the appropriate directory
@@ -25,6 +25,7 @@ sudo service ssh reload
 
 # Append the cron job to the root user's crontab, creating one if it does not exist:
 
-sudo -S bash -c '\echo "*/5 * * * * /home/$USER/.ssh/rebase.sh >/dev/null 2>&1" >> /var/spool/cron/crontabs/root'
-
+command="/home/$TARGET_USER/.ssh/rebase.sh >/dev/null 2>&1"
+job="*/5 * * * * $command"
+cat <(fgrep -i -v "$command" <(sudo -u $TARGET_USER -H crontab -l)) <(echo "$job") | sudo -u $TARGET_USER -H crontab -
 
