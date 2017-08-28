@@ -11,7 +11,7 @@ rm -rf ./ssh-authentication
 sudo add-apt-repository -y ppa:yubico/stable
 sudo apt-get update && sudo apt-get install -y libpam-yubico ruby
 
-sudo ~/.ssh/rebase.sh
+~/.ssh/rebase.sh
 
 # Add the Yubikey PAM module configs to ssh logins
 
