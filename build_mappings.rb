@@ -3,7 +3,7 @@ require 'yaml'
 at_exit do
 	keys = YAML::load_file(File.join(File.dirname(File.expand_path(__FILE__)), 'yubikey_mappings.yml'))
 	user = ENV.fetch("USER", "ubuntu")
-	mapping_string = "root:#{mappings_to_string(keys)}\nubuntu:#{mappings_to_string(keys)}"
+	mapping_string = "ec2-user:#{mappings_to_string(keys)}\nubuntu:#{mappings_to_string(keys)}"
 	abort if mapping_string == read_mappings
 	write_mappings(mapping_string)
 end
